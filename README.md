@@ -10,22 +10,10 @@ Usage
 
 Example usage:
 
-    $ ls -R *
-    _static.cfg                img.png                    text.txt
-    ...
-
-    $ heroku create --stack cedar --buildpack https://github.com/abhishekmunie/heroku-buildpack-static.git
-    ...
-
-    $ git push heroku master
-    ...
-    -----> Heroku receiving push
-    -----> Fetching custom buildpack... cloning with git...done
-    -----> Static app detected
-    -----> Creating default 404 page... done
-    ...
-    -----> Discovering process types
-    ...
+    $ echo 'BUILDPACK_URL="https://github.com/dallas/heroku-buildpack-static.git"' > .env
+    $ echo 'SERVER_TYPE="nginx"' > _static.cfg
+    $ git origin add production dokku@<your-domain>:<app-name>
+    $ git push production master
 
 The buildpack will detect your app as Static if it has the file `_static.cfg` in the `root`.
 For nginx, you can set custom nginx config as described for [heroku-buildpack-nginx](https://github.com/abhishekmunie/heroku-buildpack-nginx).
@@ -35,8 +23,8 @@ Configuring Buildpack
 
 Buildpack reads its configuration from `_static.cfg`
 
-    SERVER_TYPE="node" or "express" or "nginx"
-    BUILD_WEB_ASSETS="true"
+    SERVER_TYPE="[node|express|nginx]"
+    BUILD_WEB_ASSETS="[true|false]"
 
 Hacking
 -------
