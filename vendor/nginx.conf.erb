@@ -161,12 +161,17 @@ http {
 
     # Prevent clients from accessing hidden files (starting with a dot)
     location ~* (^|/)\. {
-        return 403;
+        return 404;
     }
 
     # Prevent clients from accessing to backup/config/source files
-    location ~* (\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$ {
-        return 403;
+    location ~* (\.(bak|cfg|conf|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$ {
+        return 404;
+    }
+
+    location /conf {
+      deny all;
+      return 404;
     }
 
     # Prevent mobile network providers from modifying your site
