@@ -1,7 +1,9 @@
-Heroku buildpack: Static
+Heroku/dokku buildpack: Static
 ============================
 
-This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpack) which serves static files using node.js, express or nginx.
+This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpack)—which can also be used with dokku—which serves static files using node.js, express or nginx.
+
+This buildpack has been modified from the original for use with Docker containers that have a `www-data` user instead of a `www` user. It also has stricter policies on denying access to certain files and directories—including blocking access to the `/conf` directory entirely and to the `_static.cfg` file. It also opts to serve up 404 errors for blocked files/directories rather than 403 errors.
 
 Usage
 -----
