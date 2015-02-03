@@ -12,7 +12,7 @@ Example usage:
 
     $ echo 'BUILDPACK_URL="https://github.com/dallas/heroku-buildpack-static.git"' > .env
     $ echo 'SERVER_TYPE="nginx"' > _static.cfg
-    $ git origin add production dokku@<your-domain>:<app-name>
+    $ git remote add production dokku@<your-domain>:<app-name>
     $ git push production master
 
 The buildpack will detect your app as Static if it has the file `_static.cfg` in the `root`.
