@@ -149,6 +149,7 @@ elif [[ $SERVER_TYPE == "nginx" ]]; then
   NGINX_BUILDPACK_DIR=$(mktemp -d -t nginx.XXXXXX)
   git clone --quiet https://github.com/abhishekmunie/heroku-buildpack-nginx.git $NGINX_BUILDPACK_DIR
   mv $NGINX_BUILDPACK_DIR/bin/compile $LP_DIR/bin/compile_nginx
+  mv $NGINX_BUILDPACK_DIR/bin/common.sh $LP_DIR/bin/common.sh
   $LP_DIR/bin/compile_nginx $BUILD_DIR $CACHE_DIR | indent
   echo "       done."
   rm -fr $NGINX_BUILDPACK_DIR
